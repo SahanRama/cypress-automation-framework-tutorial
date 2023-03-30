@@ -10,6 +10,7 @@ describe('Verify autocomplete list via webdriveruni', () => {
             const foods = $ele.text()
             const nameOfProduct = 'Ginger'
             if (foods === nameOfProduct) {
+                //$ele.trigger('click')
                 cy.wrap($ele).click()
                 cy.get('#submit-button').click()
                 cy.url().should('include', nameOfProduct)
