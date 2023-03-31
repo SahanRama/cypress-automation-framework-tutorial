@@ -21,7 +21,7 @@ describe('Test mouse actions', () => {
 
     });
 
-    it.only('Should be able to peform left mouse button hold down on a given element', () => {
+    it('Should be able to peform left mouse button hold down on a given element', () => {
         cy.visit('http://www.webdriveruniversity.com/')
         cy.get('#actions').scrollIntoView().invoke('removeAttr', 'target').click()
         cy.get('#click-box').trigger('mousedown').then(($element) => {
@@ -29,5 +29,11 @@ describe('Test mouse actions', () => {
             expect($element.text()).to.include('Well done! keep holding that click now')
         })
 
+    });
+    //following code is not working
+    it.only('Should be able to mouse hover over elements', () => {
+        cy.visit('http://www.webdriveruniversity.com/')
+        cy.get('#actions').scrollIntoView().invoke('removeAttr', 'target').click()
+        cy.get('#div-hover .dropbtn').contains('Hover Over Me Second!').trigger('mouseover',{which:1})
     });
 });
