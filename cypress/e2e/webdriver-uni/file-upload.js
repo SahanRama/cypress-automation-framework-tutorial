@@ -5,7 +5,7 @@ describe('Test upload file via webdriveruni', () => {
         cy.visit('http://www.webdriveruniversity.com')
         cy.get('#file-upload').invoke('removeAttr', 'target').click()
         
-        cy.get('#myFile').selectFile('cypress/fixtures/sahan.jpeg')
+        cy.get('#myFile').selectFile('cypress/fixtures')
         cy.get('#submit-button').click()
         cy.on('window:alert',($str)=>{
             expect($str).equal('Your file has now been uploaded!')
