@@ -6,6 +6,11 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern:"cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
-    chromeWebSecurity: false
+    baseUrl: "http://www.webdriveruniversity.com",
+    chromeWebSecurity: false,
+    pageLoadTimeout : 120000,
+    env:{
+      firstName: "Sarah"
+    }
   },
 });
