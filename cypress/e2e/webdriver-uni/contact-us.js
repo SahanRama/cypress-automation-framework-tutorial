@@ -4,6 +4,7 @@ import ContactUsPage_PO from "../../support/pageObject/webdriver-uni/ContactUsPa
 
 
 describe("Test Contact us form in WebdriverUni portal",() => {
+    Cypress.config('defaultCommandTimeout',20000)
     const homePage = new HomePage_PO();
     const contactUsPage = new ContactUsPage_PO();
     before(function(){
@@ -43,15 +44,14 @@ describe("Test Contact us form in WebdriverUni portal",() => {
         cy.document().should('have.property','charset').and ('eq','UTF-8')
         cy.title().should('include','WebDriver | Contact Us')
         cy.url().should('include','contactus')
-
+        //cy.pause()
         cy.get('[name="first_name"]').type(data.first_name)
         cy.get('[name="last_name"]').type(data.last_name)
         cy.get('[name="email"]').type(data.email)
         cy.get('[name="message"]').type("This is a comment to add to the contact us page")
-        cy.get('[type="submit"]').click()
-        cy.get('h1').should('have.text','Thank You for your Message!')
-        //contactUsPage.webdriverUni_ContactForm_Submission(Cypress.env('firstName'),data.last_name,data.email,data.comment,'h1','Thank You for your Message!')
-        //cy.webdriverUni_ContactForm_Submission(Cypress.env('firstName'),data.last_name,data.email,data.comment,'h1','Thank You for your Message!')
+        cy.get('[type="submit"]').click({timeout:8000}) // timeout wait override
+        cy.get('h1').should('have.text','Thank You for your Message!',{timeout:60000})
+        cy.screenshot();
 
     });
 })

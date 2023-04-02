@@ -9,6 +9,8 @@ module.exports = defineConfig({
     baseUrl: "http://www.webdriveruniversity.com",
     chromeWebSecurity: false,
     pageLoadTimeout : 120000,
+    screenshotOnRunFailure:true,
+    trashAssetsBeforeRuns: true,
     env:{
       firstName: "Sarah"
     }
