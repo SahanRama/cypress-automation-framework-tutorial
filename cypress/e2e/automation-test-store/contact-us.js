@@ -4,6 +4,7 @@
 describe("Test Contact us form in automation test store portal", () => {
     before(function () {
         cy.fixture('userDetail').as('user')
+        cy.viewport('iphone-x')
     })
     it("Verify user should be able to submit a successful submition via contact us form", () => {
         cy.visit("https://automationteststore.com/");
